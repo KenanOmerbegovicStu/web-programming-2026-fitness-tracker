@@ -1,0 +1,106 @@
+<div class="container-fluid">
+  <div class="row auth-wrapper">
+
+    <!-- Brand panel (hidden on small screens) -->
+    <div class="col-lg-6 auth-brand d-none d-lg-flex flex-column justify-content-between p-5">
+      <div class="d-flex align-items-center gap-2 fs-4 fw-bold">
+        <span class="brand-icon"><i class="bi bi-lightning-charge-fill"></i></span>
+        FitnessTracker
+      </div>
+
+      <div>
+        <h2 class="display-6 fw-bold mb-3">Start your training log today.</h2>
+        <p class="lead text-white-50 mb-4">Tell us your goal and experience, and your dashboard is ready in under a minute.</p>
+        <ul class="list-unstyled d-grid gap-3 mb-0">
+          <li class="d-flex align-items-center gap-3">
+            <span class="feature-icon"><i class="bi bi-collection"></i></span>
+            A growing exercise library, grouped by category
+          </li>
+          <li class="d-flex align-items-center gap-3">
+            <span class="feature-icon"><i class="bi bi-globe2"></i></span>
+            Discover new exercises from the wger database
+          </li>
+          <li class="d-flex align-items-center gap-3">
+            <span class="feature-icon"><i class="bi bi-shield-check"></i></span>
+            Your data stays private to your account
+          </li>
+        </ul>
+      </div>
+
+      <p class="small text-white-50 mb-0">&copy; 2026 FitnessTracker</p>
+    </div>
+
+    <!-- Register form -->
+    <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center py-5 bg-body">
+      <div class="auth-form w-100 px-3">
+        <div class="d-flex d-lg-none align-items-center gap-2 fs-4 fw-bold mb-4">
+          <span class="brand-icon"><i class="bi bi-lightning-charge-fill"></i></span>
+          FitnessTracker
+        </div>
+
+        <h1 class="h3 fw-bold mb-1">Create your account</h1>
+        <p class="text-body-secondary mb-4">It's free and takes less than a minute.</p>
+
+        <form id="register-form" data-next-view="login">
+          <div class="mb-3">
+            <label for="register-full-name" class="form-label">Full name</label>
+            <input type="text" class="form-control" id="register-full-name" name="full_name"
+                   placeholder="e.g. Keno Test" autocomplete="name" minlength="2" maxlength="100" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="register-email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="register-email" name="email"
+                   placeholder="you@example.com" autocomplete="email" required>
+          </div>
+
+          <div class="row g-3 mb-3">
+            <div class="col-12 col-sm-6">
+              <label for="register-password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="register-password" name="password"
+                     autocomplete="new-password" minlength="8" required>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label for="register-confirm-password" class="form-label">Confirm password</label>
+              <input type="password" class="form-control" id="register-confirm-password" name="confirm_password"
+                     autocomplete="new-password" minlength="8" required>
+            </div>
+            <div class="col-12 form-text mt-1">At least 8 characters.</div>
+          </div>
+
+          <div class="row g-3 mb-4">
+            <div class="col-12 col-sm-6">
+              <label for="register-fitness-goal" class="form-label">Fitness goal</label>
+              <select class="form-select" id="register-fitness-goal" name="fitness_goal" required>
+                <option value="" selected disabled>Choose...</option>
+                <option value="muscle_gain">Muscle gain</option>
+                <option value="weight_loss">Weight loss</option>
+                <option value="strength">Strength</option>
+                <option value="endurance">Endurance</option>
+                <option value="general_fitness">General fitness</option>
+              </select>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label for="register-experience-level" class="form-label">Experience level</label>
+              <select class="form-select" id="register-experience-level" name="experience_level" required>
+                <option value="" selected disabled>Choose...</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg w-100">
+            <i class="bi bi-person-plus me-1"></i>Create account
+          </button>
+        </form>
+
+        <p class="text-center text-body-secondary mt-4 mb-0">
+          Already have an account? <a href="#login" class="fw-semibold">Sign in</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>

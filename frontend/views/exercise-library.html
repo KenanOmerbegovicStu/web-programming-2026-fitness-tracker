@@ -1,0 +1,452 @@
+<div class="container pb-4">
+
+  <!-- Header -->
+  <div class="page-header d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+    <div>
+      <h1 class="h2 mb-1">Exercise library</h1>
+      <p class="text-body-secondary mb-0">18 exercises in 4 categories. Missing one? Search the wger database under <strong>Discover</strong>.</p>
+    </div>
+    <a href="#admin-panel" class="btn btn-outline-primary admin-only"><i class="bi bi-gear me-1"></i>Manage exercises</a>
+  </div>
+
+  <!-- Tabs: own library / external wger API -->
+  <ul class="nav nav-pills mb-4" id="library-tabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="library-tab" data-bs-toggle="pill" data-bs-target="#library-pane"
+              type="button" role="tab" aria-controls="library-pane" aria-selected="true">
+        <i class="bi bi-collection me-1"></i>Our library
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="discover-tab" data-bs-toggle="pill" data-bs-target="#discover-pane"
+              type="button" role="tab" aria-controls="discover-pane" aria-selected="false">
+        <i class="bi bi-globe2 me-1"></i>Discover exercises
+      </button>
+    </li>
+  </ul>
+
+  <div class="tab-content">
+
+    <!-- ===================== Our library ===================== -->
+    <div class="tab-pane fade show active" id="library-pane" role="tabpanel" aria-labelledby="library-tab" tabindex="0">
+
+      <!-- Filters -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <div class="row g-2">
+            <div class="col-12 col-md-6">
+              <label for="library-search" class="visually-hidden">Search exercises</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+                <input type="search" class="form-control" id="library-search" placeholder="Search by name or muscle group...">
+              </div>
+            </div>
+            <div class="col-6 col-md-3">
+              <label for="library-category" class="visually-hidden">Category</label>
+              <select class="form-select" id="library-category">
+                <option value="all" selected>All categories</option>
+                <option value="1">Strength</option>
+                <option value="2">Bodyweight</option>
+                <option value="3">Cardio</option>
+                <option value="4">Mobility</option>
+              </select>
+            </div>
+            <div class="col-6 col-md-3">
+              <label for="library-muscle" class="visually-hidden">Muscle group</label>
+              <select class="form-select" id="library-muscle">
+                <option value="all" selected>All muscle groups</option>
+                <option value="chest">Chest</option>
+                <option value="back">Back</option>
+                <option value="legs">Legs</option>
+                <option value="shoulders">Shoulders</option>
+                <option value="arms">Arms</option>
+                <option value="core">Core</option>
+                <option value="full_body">Full body</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Strength -->
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <h2 class="h5 mb-0">Strength</h2>
+        <span class="badge rounded-pill text-bg-light">11</span>
+      </div>
+      <div class="row g-3 mb-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Bench Press</h3>
+                <span class="badge bg-primary-subtle text-primary-emphasis">Chest</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Press a barbell from the chest while lying on a flat bench.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Incline Dumbbell Press</h3>
+                <span class="badge bg-primary-subtle text-primary-emphasis">Chest</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Dumbbell press on a 30&deg; incline bench, targets the upper chest.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Squat</h3>
+                <span class="badge bg-success-subtle text-success-emphasis">Legs</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Barbell back squat to parallel or below, keeping the chest up.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Romanian Deadlift</h3>
+                <span class="badge bg-success-subtle text-success-emphasis">Legs</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Hip hinge with a barbell and soft knees, for hamstrings and glutes.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Leg Press</h3>
+                <span class="badge bg-success-subtle text-success-emphasis">Legs</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Machine press for quads and glutes with a supported back.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Deadlift</h3>
+                <span class="badge bg-warning-subtle text-warning-emphasis">Back</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Lift a barbell from the floor to hip height with a neutral spine.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Barbell Row</h3>
+                <span class="badge bg-warning-subtle text-warning-emphasis">Back</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Bent-over row pulling the bar to the lower chest.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Overhead Press</h3>
+                <span class="badge bg-info-subtle text-info-emphasis">Shoulders</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Standing barbell press from the shoulders to lockout overhead.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Lateral Raise</h3>
+                <span class="badge bg-info-subtle text-info-emphasis">Shoulders</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Raise light dumbbells out to the sides up to shoulder height.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Barbell Curl</h3>
+                <span class="badge bg-danger-subtle text-danger-emphasis">Arms</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Curl a barbell with elbows fixed at your sides, for the biceps.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Triceps Pushdown</h3>
+                <span class="badge bg-danger-subtle text-danger-emphasis">Arms</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Cable pushdown with a straight bar or rope, for the triceps.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bodyweight -->
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <h2 class="h5 mb-0">Bodyweight</h2>
+        <span class="badge rounded-pill text-bg-light">4</span>
+      </div>
+      <div class="row g-3 mb-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Push-up</h3>
+                <span class="badge bg-primary-subtle text-primary-emphasis">Chest</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Classic push-up with a straight body line from head to heels.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Pull-up</h3>
+                <span class="badge bg-warning-subtle text-warning-emphasis">Back</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Pull your chin over the bar from a dead hang, palms facing away.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Plank</h3>
+                <span class="badge bg-secondary-subtle text-secondary-emphasis">Core</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Hold a straight forearm plank while bracing the core.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Walking Lunge</h3>
+                <span class="badge bg-success-subtle text-success-emphasis">Legs</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Alternate long forward lunges while walking, knee just above the floor.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cardio -->
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <h2 class="h5 mb-0">Cardio</h2>
+        <span class="badge rounded-pill text-bg-light">3</span>
+      </div>
+      <div class="row g-3 mb-4">
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Running</h3>
+                <span class="badge bg-dark-subtle text-dark-emphasis">Full body</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Steady outdoor or treadmill run at a conversational pace.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Rowing Machine</h3>
+                <span class="badge bg-dark-subtle text-dark-emphasis">Full body</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Drive with the legs first, then lean back and pull the handle in.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Cycling</h3>
+                <span class="badge bg-success-subtle text-success-emphasis">Legs</span>
+              </div>
+              <p class="small text-body-secondary flex-grow-1">Stationary bike or road cycling, intervals or steady state.</p>
+              <button type="button" class="btn btn-sm btn-light align-self-start" data-bs-toggle="modal" data-bs-target="#exercise-detail-modal">Details</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobility (empty category) -->
+      <div class="d-flex align-items-center gap-2 mb-3">
+        <h2 class="h5 mb-0">Mobility</h2>
+        <span class="badge rounded-pill text-bg-light">0</span>
+      </div>
+      <div class="card">
+        <div class="card-body text-center text-body-secondary py-4">
+          <i class="bi bi-inbox fs-3 d-block mb-2"></i>
+          No exercises in this category yet.
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== Discover (wger API) ===================== -->
+    <div class="tab-pane fade" id="discover-pane" role="tabpanel" aria-labelledby="discover-tab" tabindex="0">
+
+      <div class="card discover-hero mb-4">
+        <div class="card-body p-4">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <i class="bi bi-globe2 fs-4"></i>
+            <h2 class="h5 mb-0">Discover exercises from wger</h2>
+          </div>
+          <p class="mb-3 text-white-50">Search the open <a href="https://wger.de" target="_blank" rel="noopener" class="link-light">wger Workout Manager</a> database for exercises that are not in our library yet.</p>
+          <form id="discover-form" class="row g-2">
+            <div class="col-12 col-md">
+              <label for="discover-search" class="visually-hidden">Search wger exercises</label>
+              <input type="search" class="form-control form-control-lg" id="discover-search" name="term" value="kettlebell" placeholder="e.g. kettlebell, cable fly, hip thrust">
+            </div>
+            <div class="col-12 col-md-auto d-grid">
+              <button type="submit" class="btn btn-light btn-lg"><i class="bi bi-search me-1"></i>Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="h6 mb-0 text-body-secondary">3 results for &ldquo;kettlebell&rdquo;</h2>
+        <span class="small text-body-secondary">Source: wger.de</span>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Kettlebell Swing</h3>
+                <span class="badge text-bg-dark"><i class="bi bi-globe2 me-1"></i>wger</span>
+              </div>
+              <dl class="small mb-3">
+                <dt class="d-inline">Muscles:</dt> <dd class="d-inline text-body-secondary">Glutes, Hamstrings</dd><br>
+                <dt class="d-inline">Equipment:</dt> <dd class="d-inline text-body-secondary">Kettlebell</dd>
+              </dl>
+              <p class="small text-body-secondary flex-grow-1">Hinge at the hips and swing the kettlebell to chest height using hip drive.</p>
+              <div class="d-flex flex-wrap gap-2">
+                <a href="https://wger.de/en/exercise/overview/" target="_blank" rel="noopener" class="btn btn-sm btn-light">View on wger <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                <button type="button" class="btn btn-sm btn-outline-primary admin-only"><i class="bi bi-download me-1"></i>Import</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Kettlebell Goblet Squat</h3>
+                <span class="badge text-bg-dark"><i class="bi bi-globe2 me-1"></i>wger</span>
+              </div>
+              <dl class="small mb-3">
+                <dt class="d-inline">Muscles:</dt> <dd class="d-inline text-body-secondary">Quadriceps, Glutes</dd><br>
+                <dt class="d-inline">Equipment:</dt> <dd class="d-inline text-body-secondary">Kettlebell</dd>
+              </dl>
+              <p class="small text-body-secondary flex-grow-1">Hold the kettlebell at your chest and squat down between your knees.</p>
+              <div class="d-flex flex-wrap gap-2">
+                <a href="https://wger.de/en/exercise/overview/" target="_blank" rel="noopener" class="btn btn-sm btn-light">View on wger <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                <button type="button" class="btn btn-sm btn-outline-primary admin-only"><i class="bi bi-download me-1"></i>Import</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card exercise-card h-100">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start gap-2 mb-2">
+                <h3 class="h6 fw-semibold mb-0">Turkish Get-up</h3>
+                <span class="badge text-bg-dark"><i class="bi bi-globe2 me-1"></i>wger</span>
+              </div>
+              <dl class="small mb-3">
+                <dt class="d-inline">Muscles:</dt> <dd class="d-inline text-body-secondary">Shoulders, Abs</dd><br>
+                <dt class="d-inline">Equipment:</dt> <dd class="d-inline text-body-secondary">Kettlebell</dd>
+              </dl>
+              <p class="small text-body-secondary flex-grow-1">Stand up from lying on the floor while holding a kettlebell overhead.</p>
+              <div class="d-flex flex-wrap gap-2">
+                <a href="https://wger.de/en/exercise/overview/" target="_blank" rel="noopener" class="btn btn-sm btn-light">View on wger <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+                <button type="button" class="btn btn-sm btn-outline-primary admin-only"><i class="bi bi-download me-1"></i>Import</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="small text-body-secondary mt-4 mb-0">
+        <i class="bi bi-info-circle me-1"></i>If wger is not reachable, a short message is shown here and the rest of the app keeps working.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Exercise detail modal (static example) -->
+<div class="modal fade" id="exercise-detail-modal" tabindex="-1" aria-labelledby="exercise-detail-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <h2 class="modal-title h5" id="exercise-detail-title">Bench Press</h2>
+          <div class="d-flex gap-1 mt-1">
+            <span class="badge text-bg-light">Strength</span>
+            <span class="badge bg-primary-subtle text-primary-emphasis">Chest</span>
+          </div>
+        </div>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Press a barbell from the chest while lying on a flat bench.</p>
+        <h3 class="h6">How to perform</h3>
+        <ol class="small text-body-secondary ps-3">
+          <li>Lie on the bench with your eyes under the bar and feet flat on the floor.</li>
+          <li>Grip the bar slightly wider than shoulder width and unrack it.</li>
+          <li>Lower the bar to the middle of your chest with control.</li>
+          <li>Press it back up until your arms are straight.</li>
+        </ol>
+        <div class="alert alert-light border d-flex align-items-center gap-2 mb-0">
+          <i class="bi bi-trophy text-danger"></i>
+          <span class="small">Your record: <strong>85 kg &times; 5</strong> (19 Oct 2026)</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+        <a href="#workout-log" class="btn btn-primary"><i class="bi bi-plus-lg me-1"></i>Use in workout</a>
+      </div>
+    </div>
+  </div>
+</div>

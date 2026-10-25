@@ -1,0 +1,80 @@
+<div class="container-fluid">
+  <div class="row auth-wrapper">
+
+    <!-- Brand panel (hidden on small screens) -->
+    <div class="col-lg-6 auth-brand d-none d-lg-flex flex-column justify-content-between p-5">
+      <div class="d-flex align-items-center gap-2 fs-4 fw-bold">
+        <span class="brand-icon"><i class="bi bi-lightning-charge-fill"></i></span>
+        FitnessTracker
+      </div>
+
+      <div>
+        <h2 class="display-6 fw-bold mb-3">Every rep counts.<br>Keep track of all of them.</h2>
+        <p class="lead text-white-50 mb-4">Log your workouts, follow your personal records and see your progress week by week.</p>
+        <ul class="list-unstyled d-grid gap-3 mb-0">
+          <li class="d-flex align-items-center gap-3">
+            <span class="feature-icon"><i class="bi bi-journal-plus"></i></span>
+            Log exercises, sets, reps and weight in seconds
+          </li>
+          <li class="d-flex align-items-center gap-3">
+            <span class="feature-icon"><i class="bi bi-trophy"></i></span>
+            Track your personal records
+          </li>
+          <li class="d-flex align-items-center gap-3">
+            <span class="feature-icon"><i class="bi bi-graph-up-arrow"></i></span>
+            See your progress over time
+          </li>
+        </ul>
+      </div>
+
+      <p class="small text-white-50 mb-0">&copy; 2026 FitnessTracker</p>
+    </div>
+
+    <!-- Login form -->
+    <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center py-5 bg-body">
+      <div class="auth-form w-100 px-3">
+        <div class="d-flex d-lg-none align-items-center gap-2 fs-4 fw-bold mb-4">
+          <span class="brand-icon"><i class="bi bi-lightning-charge-fill"></i></span>
+          FitnessTracker
+        </div>
+
+        <h1 class="h3 fw-bold mb-1">Welcome back</h1>
+        <p class="text-body-secondary mb-4">Sign in to continue your training.</p>
+
+        <form id="login-form" data-next-view="dashboard">
+          <div class="mb-3">
+            <label for="login-email" class="form-label">Email address</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+              <input type="email" class="form-control" id="login-email" name="email"
+                     placeholder="you@example.com" autocomplete="email" required>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="login-password" class="form-label">Password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-lock"></i></span>
+              <input type="password" class="form-control" id="login-password" name="password"
+                     placeholder="Your password" autocomplete="current-password" minlength="8" required>
+            </div>
+          </div>
+
+          <div class="form-check mb-4">
+            <input class="form-check-input" type="checkbox" id="login-remember" name="remember">
+            <label class="form-check-label" for="login-remember">Keep me signed in</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-lg w-100">
+            <i class="bi bi-box-arrow-in-right me-1"></i>Sign in
+          </button>
+        </form>
+
+        <p class="text-center text-body-secondary mt-4 mb-0">
+          Don't have an account? <a href="#register" class="fw-semibold">Create one</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+</div>

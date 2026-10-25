@@ -1,0 +1,160 @@
+<div class="container pb-4">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h1 class="h2 mb-1">My profile</h1>
+    <p class="text-body-secondary mb-0">Your account details, training goal and password.</p>
+  </div>
+
+  <div class="row g-4">
+
+    <!-- Profile summary -->
+    <div class="col-lg-4 d-flex flex-column gap-4">
+      <div class="card text-center">
+        <div class="card-body p-4">
+          <span class="avatar avatar-lg mb-3">KT</span>
+          <h2 class="h4 mb-1">Keno Test</h2>
+          <p class="text-body-secondary mb-2">keno.test@example.com</p>
+          <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis">User</span>
+        </div>
+        <ul class="list-group list-group-flush text-start">
+          <li class="list-group-item d-flex justify-content-between py-3">
+            <span class="text-body-secondary"><i class="bi bi-bullseye me-2"></i>Goal</span><span class="fw-semibold">Strength</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between py-3">
+            <span class="text-body-secondary"><i class="bi bi-bar-chart-steps me-2"></i>Experience</span><span class="fw-semibold">Intermediate</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between py-3">
+            <span class="text-body-secondary"><i class="bi bi-calendar-heart me-2"></i>Member since</span><span class="fw-semibold">2 Sep 2026</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header py-3"><i class="bi bi-activity me-2 text-primary"></i>Statistics</div>
+        <div class="card-body">
+          <div class="row g-3 text-center">
+            <div class="col-6">
+              <div class="stat-value fs-3 fw-bold">42</div>
+              <div class="small text-body-secondary">Workouts</div>
+            </div>
+            <div class="col-6">
+              <div class="stat-value fs-3 fw-bold">7</div>
+              <div class="small text-body-secondary">Personal records</div>
+            </div>
+            <div class="col-6">
+              <div class="stat-value fs-3 fw-bold">6 wk</div>
+              <div class="small text-body-secondary">Current streak</div>
+            </div>
+            <div class="col-6">
+              <div class="stat-value fs-3 fw-bold">Squat</div>
+              <div class="small text-body-secondary">Favourite exercise</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Forms -->
+    <div class="col-lg-8 d-flex flex-column gap-4">
+
+      <!-- Edit profile -->
+      <div class="card">
+        <div class="card-header py-3"><i class="bi bi-person-gear me-2 text-primary"></i>Edit profile</div>
+        <div class="card-body">
+          <form id="profile-form">
+            <div class="row g-3">
+              <div class="col-12 col-md-6">
+                <label for="profile-full-name" class="form-label">Full name</label>
+                <input type="text" class="form-control" id="profile-full-name" name="full_name" value="Keno Test" minlength="2" maxlength="100" required>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="profile-email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="profile-email" name="email" value="keno.test@example.com" required>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="profile-fitness-goal" class="form-label">Fitness goal</label>
+                <select class="form-select" id="profile-fitness-goal" name="fitness_goal" required>
+                  <option value="muscle_gain">Muscle gain</option>
+                  <option value="weight_loss">Weight loss</option>
+                  <option value="strength" selected>Strength</option>
+                  <option value="endurance">Endurance</option>
+                  <option value="general_fitness">General fitness</option>
+                </select>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="profile-experience-level" class="form-label">Experience level</label>
+                <select class="form-select" id="profile-experience-level" name="experience_level" required>
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate" selected>Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end mt-4">
+              <button type="submit" class="btn btn-primary"><i class="bi bi-check2 me-1"></i>Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Change password -->
+      <div class="card">
+        <div class="card-header py-3"><i class="bi bi-key me-2 text-primary"></i>Change password</div>
+        <div class="card-body">
+          <form id="password-form">
+            <div class="row g-3">
+              <div class="col-12">
+                <label for="password-current" class="form-label">Current password</label>
+                <input type="password" class="form-control" id="password-current" name="current_password" autocomplete="current-password" required>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="password-new" class="form-label">New password</label>
+                <input type="password" class="form-control" id="password-new" name="new_password" autocomplete="new-password" minlength="8" required>
+              </div>
+              <div class="col-12 col-md-6">
+                <label for="password-confirm" class="form-label">Confirm new password</label>
+                <input type="password" class="form-control" id="password-confirm" name="confirm_password" autocomplete="new-password" minlength="8" required>
+              </div>
+            </div>
+            <div class="d-flex justify-content-end mt-4">
+              <button type="submit" class="btn btn-primary"><i class="bi bi-shield-lock me-1"></i>Update password</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Danger zone -->
+      <div class="card border border-danger-subtle">
+        <div class="card-body d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+          <div>
+            <h2 class="h6 text-danger mb-1">Delete account</h2>
+            <p class="small text-body-secondary mb-0">Removes your account, all workouts and personal records.</p>
+          </div>
+          <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#account-delete-modal">
+            <i class="bi bi-trash me-1"></i>Delete account
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Delete account modal -->
+<div class="modal fade" id="account-delete-modal" tabindex="-1" aria-labelledby="account-delete-title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title h5" id="account-delete-title">Delete your account?</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Your account, all 42 workouts and 7 personal records will be deleted permanently.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+        <a href="#register" class="btn btn-danger"><i class="bi bi-trash me-1"></i>Delete account</a>
+      </div>
+    </div>
+  </div>
+</div>
