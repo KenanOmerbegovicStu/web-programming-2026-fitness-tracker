@@ -1,0 +1,225 @@
+<div class="container pb-4">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h1 class="h2 mb-1">Log workout</h1>
+    <p class="text-body-secondary mb-0">Record what you trained today: the session details and every exercise with its sets, reps and weight.</p>
+  </div>
+
+  <form id="workout-form" data-next-view="workout-history">
+    <div class="row g-4">
+
+      <!-- Main column -->
+      <div class="col-lg-8 d-flex flex-column gap-4">
+
+        <!-- Workout details -->
+        <div class="card">
+          <div class="card-header py-3"><i class="bi bi-calendar-event me-2 text-primary"></i>Workout details</div>
+          <div class="card-body">
+            <div class="row g-3">
+              <div class="col-12 col-sm-6 col-xl-3">
+                <label for="workout-date" class="form-label">Date</label>
+                <input type="date" class="form-control" id="workout-date" name="workout_date" value="2026-10-25" required>
+              </div>
+              <div class="col-12 col-sm-6 col-xl-3">
+                <label for="workout-type" class="form-label">Workout type</label>
+                <select class="form-select" id="workout-type" name="workout_type" required>
+                  <option value="" disabled>Choose...</option>
+                  <option value="chest">Chest Day</option>
+                  <option value="back">Back Day</option>
+                  <option value="legs">Leg Day</option>
+                  <option value="shoulders" selected>Shoulder Day</option>
+                  <option value="arms">Arm Day</option>
+                  <option value="full_body">Full Body</option>
+                  <option value="cardio">Cardio</option>
+                  <option value="custom">Custom</option>
+                </select>
+              </div>
+              <div class="col-6 col-xl-3">
+                <label for="workout-duration" class="form-label">Duration</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="workout-duration" name="duration_minutes"
+                         min="1" max="300" value="55" required>
+                  <span class="input-group-text">min</span>
+                </div>
+              </div>
+              <div class="col-6 col-xl-3">
+                <label for="workout-calories" class="form-label">Calories</label>
+                <div class="input-group">
+                  <input type="number" class="form-control" id="workout-calories" name="calories"
+                         min="0" max="5000" value="330">
+                  <span class="input-group-text">kcal</span>
+                </div>
+              </div>
+              <div class="col-12">
+                <label for="workout-notes" class="form-label">Notes <span class="text-body-secondary">(optional)</span></label>
+                <textarea class="form-control" id="workout-notes" name="notes" rows="2" maxlength="500"
+                          placeholder="How did it feel? Anything to remember for next time?">Felt strong today, shoulder warm-up helped a lot.</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exercises -->
+        <div class="card">
+          <div class="card-header d-flex justify-content-between align-items-center py-3">
+            <span><i class="bi bi-list-check me-2 text-primary"></i>Exercises</span>
+            <span class="badge rounded-pill text-bg-primary">2</span>
+          </div>
+          <div class="card-body d-flex flex-column gap-3">
+
+            <!-- Exercise row 1 -->
+            <div class="exercise-entry border rounded-3 p-3">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="exercise-number">1</span>
+                <button type="button" class="btn btn-sm btn-outline-danger remove-exercise" aria-label="Remove exercise 1">
+                  <i class="bi bi-trash"></i><span class="d-none d-sm-inline ms-1">Remove</span>
+                </button>
+              </div>
+              <div class="row g-3">
+                <div class="col-12 col-md-5">
+                  <label for="exercise-0-id" class="form-label">Exercise</label>
+                  <select class="form-select" id="exercise-0-id" name="exercises[0][exercise_id]" required>
+                    <option value="" disabled>Choose an exercise...</option>
+                    <optgroup label="Strength">
+                      <option value="1">Bench Press</option>
+                      <option value="2">Incline Dumbbell Press</option>
+                      <option value="3">Squat</option>
+                      <option value="4">Romanian Deadlift</option>
+                      <option value="5">Leg Press</option>
+                      <option value="6">Deadlift</option>
+                      <option value="7">Barbell Row</option>
+                      <option value="8" selected>Overhead Press</option>
+                      <option value="9">Lateral Raise</option>
+                      <option value="10">Barbell Curl</option>
+                      <option value="11">Triceps Pushdown</option>
+                    </optgroup>
+                    <optgroup label="Bodyweight">
+                      <option value="12">Push-up</option>
+                      <option value="13">Pull-up</option>
+                      <option value="14">Plank</option>
+                      <option value="15">Walking Lunge</option>
+                    </optgroup>
+                    <optgroup label="Cardio">
+                      <option value="16">Running</option>
+                      <option value="17">Rowing Machine</option>
+                      <option value="18">Cycling</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div class="col-4 col-md-2">
+                  <label for="exercise-0-sets" class="form-label">Sets</label>
+                  <input type="number" class="form-control" id="exercise-0-sets" name="exercises[0][sets]" min="1" max="20" value="4" required>
+                </div>
+                <div class="col-4 col-md-2">
+                  <label for="exercise-0-reps" class="form-label">Reps</label>
+                  <input type="number" class="form-control" id="exercise-0-reps" name="exercises[0][reps]" min="1" max="100" value="8" required>
+                </div>
+                <div class="col-4 col-md-3">
+                  <label for="exercise-0-weight" class="form-label">Weight</label>
+                  <div class="input-group">
+                    <input type="number" class="form-control" id="exercise-0-weight" name="exercises[0][weight_kg]" min="0" max="500" step="0.5" value="50">
+                    <span class="input-group-text">kg</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Exercise row 2 -->
+            <div class="exercise-entry border rounded-3 p-3">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="exercise-number">2</span>
+                <button type="button" class="btn btn-sm btn-outline-danger remove-exercise" aria-label="Remove exercise 2">
+                  <i class="bi bi-trash"></i><span class="d-none d-sm-inline ms-1">Remove</span>
+                </button>
+              </div>
+              <div class="row g-3">
+                <div class="col-12 col-md-5">
+                  <label for="exercise-1-id" class="form-label">Exercise</label>
+                  <select class="form-select" id="exercise-1-id" name="exercises[1][exercise_id]" required>
+                    <option value="" disabled>Choose an exercise...</option>
+                    <optgroup label="Strength">
+                      <option value="1">Bench Press</option>
+                      <option value="2">Incline Dumbbell Press</option>
+                      <option value="3">Squat</option>
+                      <option value="4">Romanian Deadlift</option>
+                      <option value="5">Leg Press</option>
+                      <option value="6">Deadlift</option>
+                      <option value="7">Barbell Row</option>
+                      <option value="8">Overhead Press</option>
+                      <option value="9" selected>Lateral Raise</option>
+                      <option value="10">Barbell Curl</option>
+                      <option value="11">Triceps Pushdown</option>
+                    </optgroup>
+                    <optgroup label="Bodyweight">
+                      <option value="12">Push-up</option>
+                      <option value="13">Pull-up</option>
+                      <option value="14">Plank</option>
+                      <option value="15">Walking Lunge</option>
+                    </optgroup>
+                    <optgroup label="Cardio">
+                      <option value="16">Running</option>
+                      <option value="17">Rowing Machine</option>
+                      <option value="18">Cycling</option>
+                    </optgroup>
+                  </select>
+                </div>
+                <div class="col-4 col-md-2">
+                  <label for="exercise-1-sets" class="form-label">Sets</label>
+                  <input type="number" class="form-control" id="exercise-1-sets" name="exercises[1][sets]" min="1" max="20" value="3" required>
+                </div>
+                <div class="col-4 col-md-2">
+                  <label for="exercise-1-reps" class="form-label">Reps</label>
+                  <input type="number" class="form-control" id="exercise-1-reps" name="exercises[1][reps]" min="1" max="100" value="12" required>
+                </div>
+                <div class="col-4 col-md-3">
+                  <label for="exercise-1-weight" class="form-label">Weight</label>
+                  <div class="input-group">
+                    <input type="number" class="form-control" id="exercise-1-weight" name="exercises[1][weight_kg]" min="0" max="500" step="0.5" value="10">
+                    <span class="input-group-text">kg</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Adding rows dynamically comes in Milestone 4 -->
+            <button type="button" class="btn btn-outline-primary border-dashed w-100 py-3" id="add-exercise">
+              <i class="bi bi-plus-lg me-1"></i>Add exercise
+            </button>
+            <p class="small text-body-secondary mb-0">
+              Can't find an exercise? Look it up in the <a href="#exercise-library">exercise library</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary column -->
+      <div class="col-lg-4">
+        <div class="card summary-sticky">
+          <div class="card-header py-3"><i class="bi bi-clipboard-data me-2 text-primary"></i>Summary</div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between py-3">
+              <span class="text-body-secondary">Exercises</span><span class="fw-semibold">2</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between py-3">
+              <span class="text-body-secondary">Total sets</span><span class="fw-semibold">7</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between py-3">
+              <span class="text-body-secondary">Calories</span><span class="fw-semibold">330 kcal</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between py-3">
+              <span class="text-body-secondary">Duration</span><span class="fw-semibold">55 min</span>
+            </li>
+          </ul>
+          <div class="card-body d-grid gap-2">
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="bi bi-check2-circle me-1"></i>Save workout
+            </button>
+            <a href="#dashboard" class="btn btn-light">Cancel</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </form>
+</div>

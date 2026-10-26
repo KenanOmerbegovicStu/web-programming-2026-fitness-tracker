@@ -1,0 +1,19 @@
+# Secrets: only config.example.php is committed
+backend/config/config.php
+
+# Logs (the folder itself is kept with .gitkeep)
+backend/logs/*
+!backend/logs/.gitkeep
+
+# Dependencies
+backend/vendor/
+node_modules/
+
+# Local course material and OS files
+docs/guidelines/
+.DS_Store
+Thumbs.db
+
+# Local editor and AI tool settings
+.claude/settings.local.json
+.vscode/
