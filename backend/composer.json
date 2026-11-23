@@ -1,0 +1,11 @@
+{
+    "require": {
+        "flightphp/core": "^3.19",
+        "zircote/swagger-php": "^6.12"
+    },
+    "config": {
+        "platform": {
+            "php": "8.2.12"
+        }
+    }
+}

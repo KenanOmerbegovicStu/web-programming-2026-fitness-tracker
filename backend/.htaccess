@@ -1,0 +1,6 @@
+# Send every request that is not an existing file/folder to index.php (FlightPHP).
+# Existing files (e.g. public/v1/docs/swagger.php) are served directly.
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]

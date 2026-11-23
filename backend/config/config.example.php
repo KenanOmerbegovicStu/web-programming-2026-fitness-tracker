@@ -9,6 +9,11 @@ class Config
     public static function DB_PASSWORD() { return self::get_env('DB_PASSWORD', ''); }
     public static function JWT_SECRET()  { return self::get_env('JWT_SECRET', 'change-me'); }
 
+
+    public static function WGER_BASE_URL() { return self::get_env('WGER_BASE_URL', 'https://wger.de/api/v2'); }
+    public static function WGER_TIMEOUT()  { return (int) self::get_env('WGER_TIMEOUT', 5); }
+    public static function WGER_API_KEY()  { return self::get_env('WGER_API_KEY', ''); }
+
     // Environment variables (set on the server) win over the default values above.
     public static function get_env($name, $default)
     {
