@@ -21,12 +21,14 @@ in our own library.
 ## Folder structure
 - frontend/: index.html (SPA shell), css/, js/, views/ (one HTML file per view), assets/ (images, icons)
 - backend/: index.php, rest/routes/, rest/services/, rest/dao/, middleware/, config/, logs/
+- database/: fitness_tracker.sql (schema and sample data; the database is created from this file)
 - docs/: AI_LOG.md, ERD and other documentation
 
 ## Current milestone
-Milestone 1: project structure, static SPA frontend, draft ERD, README draft.
-- The frontend is static: no AJAX calls and no backend code yet. Use realistic sample data in the HTML.
-- Do not create PHP files in backend/ during Milestone 1, except config/config.example.php.
+Milestone 2: MySQL database and DAO layer.
+- The schema is docs/erd.dbml; database/fitness_tracker.sql creates it with sample data and must stay in sync.
+- backend/rest/dao/: BaseDao.php plus one DAO per table, and test.php that calls every DAO method.
+- No services, routes or index.php yet (Milestone 3). The frontend stays static until Milestone 4.
 
 ## Frontend rules
 - Each view is in its own file in frontend/views/ and is registered once in frontend/js/app.js.
@@ -44,10 +46,18 @@ Milestone 1: project structure, static SPA frontend, draft ERD, README draft.
 - All SQL uses PDO prepared statements with named placeholders. Never glue values into SQL strings.
 - Routes return JSON with correct HTTP status codes (200, 201, 400, 401, 403, 404, 500).
 - Never return password hashes from the API.
+- exercise_categories.exercise_type (weighted, bodyweight, cardio) is inherited by every exercise of the
+  category (read it with a JOIN; exercises have no type column). It decides which columns of workout_exercises and
+  personal_records are used: weighted = sets, reps, weight_kg; bodyweight = sets, reps or duration_seconds,
+  optional added weight_kg; cardio = duration_seconds, distance_km, optional added weight_kg (vest, backpack).
+  The database only blocks impossible rows; the rules per type are checked in the services (Milestone 3).
 
 ## Conventions
 - PHP classes: PascalCase (WorkoutService, WorkoutDao). Files are named after the class.
-- JavaScript and PHP variables: camelCase. Database tables and columns: snake_case.
+- PHP methods and variables: snake_case, as in the course labs (get_by_id(), $user_id). Array keys match the
+  database columns, so the backend uses one style from the database to the JSON.
+- Database tables and columns: snake_case.
+- JavaScript variables and functions: camelCase. JSON keys from the API stay snake_case (database columns).
 - View files and view ids: kebab-case (workout-history.html, #workout-history).
 
 ## Rules for AI assistants
