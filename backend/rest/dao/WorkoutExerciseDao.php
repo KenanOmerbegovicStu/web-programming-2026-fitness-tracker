@@ -21,4 +21,14 @@ class WorkoutExerciseDao extends BaseDao
             ['workout_id' => $workout_id]
         );
     }
+
+    /** How many logged sets use an exercise - such an exercise cannot be deleted (FK RESTRICT). */
+    public function count_by_exercise($exercise_id)
+    {
+        $row = $this->query_unique(
+            "SELECT COUNT(*) AS total FROM workout_exercises WHERE exercise_id = :exercise_id",
+            ['exercise_id' => $exercise_id]
+        );
+        return (int) $row['total'];
+    }
 }

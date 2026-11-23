@@ -42,4 +42,11 @@ class UserDao extends BaseDao
             ['role' => $role]
         );
     }
+
+    /** Number of users with a role - the service uses it so the last admin cannot be removed. */
+    public function count_by_role($role)
+    {
+        $row = $this->query_unique("SELECT COUNT(*) AS total FROM users WHERE role = :role", ['role' => $role]);
+        return (int) $row['total'];
+    }
 }

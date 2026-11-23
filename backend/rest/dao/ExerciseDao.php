@@ -56,4 +56,19 @@ class ExerciseDao extends BaseDao
             ['name' => '%' . $text . '%', 'muscle' => '%' . $text . '%']
         );
     }
+
+    public function get_by_name($exercise_name)
+    {
+        return $this->query_unique(self::SELECT . " WHERE e.exercise_name = :exercise_name", ['exercise_name' => $exercise_name]);
+    }
+
+    /** Number of exercises in a category - a category with exercises cannot be deleted. */
+    public function count_by_category($category_id)
+    {
+        $row = $this->query_unique(
+            "SELECT COUNT(*) AS total FROM exercises WHERE category_id = :category_id",
+            ['category_id' => $category_id]
+        );
+        return (int) $row['total'];
+    }
 }

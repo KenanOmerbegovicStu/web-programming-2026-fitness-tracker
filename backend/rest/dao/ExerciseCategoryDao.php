@@ -27,4 +27,20 @@ class ExerciseCategoryDao extends BaseDao
              ORDER BY c.id"
         );
     }
+
+    /**
+     * How many logged sets and personal records use the exercises of this category.
+     * The service blocks a change of exercise_type while this is above 0 (old rows would no longer fit the type).
+     */
+    public function count_usage($category_id)
+    {
+        $row = $this->query_unique(
+            "SELECT (SELECT COUNT(*) FROM workout_exercises we JOIN exercises e ON e.id = we.exercise_id
+                     WHERE e.category_id = :category_id_1)
+                  + (SELECT COUNT(*) FROM personal_records pr JOIN exercises e ON e.id = pr.exercise_id
+                     WHERE e.category_id = :category_id_2) AS total",
+            ['category_id_1' => $category_id, 'category_id_2' => $category_id]
+        );
+        return (int) $row['total'];
+    }
 }

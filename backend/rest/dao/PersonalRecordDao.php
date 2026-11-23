@@ -42,4 +42,14 @@ class PersonalRecordDao extends BaseDao
             ['user_id' => $user_id]
         );
     }
+
+    /** How many records use an exercise - such an exercise cannot be deleted (FK RESTRICT). */
+    public function count_by_exercise($exercise_id)
+    {
+        $row = $this->query_unique(
+            "SELECT COUNT(*) AS total FROM personal_records WHERE exercise_id = :exercise_id",
+            ['exercise_id' => $exercise_id]
+        );
+        return (int) $row['total'];
+    }
 }

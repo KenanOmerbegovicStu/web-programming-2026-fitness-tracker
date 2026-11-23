@@ -20,15 +20,18 @@ in our own library.
 
 ## Folder structure
 - frontend/: index.html (SPA shell), css/, js/, views/ (one HTML file per view), assets/ (images, icons)
-- backend/: index.php, rest/routes/, rest/services/, rest/dao/, middleware/, config/, logs/
+- backend/: index.php (services, error handler, routes, Flight::start()), .htaccess, composer.json,
+  rest/routes/, rest/services/, rest/dao/, utils/ (exceptions, Validator, Roles, Logger), middleware/,
+  config/, logs/, public/v1/docs/ (Swagger UI, swagger.php, doc_setup.php, paths/)
 - database/: fitness_tracker.sql (schema and sample data; the database is created from this file)
 - docs/: AI_LOG.md, ERD and other documentation
 
 ## Current milestone
-Milestone 2: MySQL database and DAO layer.
-- The schema is docs/erd.dbml; database/fitness_tracker.sql creates it with sample data and must stay in sync.
-- backend/rest/dao/: BaseDao.php plus one DAO per table, and test.php that calls every DAO method.
-- No services, routes or index.php yet (Milestone 3). The frontend stays static until Milestone 4.
+Milestone 3: services, REST routes, OpenAPI documentation and the external API (wger).
+- One service per table in backend/rest/services/ (extends BaseService); rest/services/test.php tries every rule.
+- One routes file per entity in backend/rest/routes/; one Paths class per routes file in public/v1/docs/paths/.
+- External API: WgerService + GET /external/exercises. The frontend stays static until Milestone 4.
+- No JWT and no middleware yet (Milestone 4): user_id is sent in the request body or URL for now.
 
 ## Frontend rules
 - Each view is in its own file in frontend/views/ and is registered once in frontend/js/app.js.
@@ -51,6 +54,17 @@ Milestone 2: MySQL database and DAO layer.
   personal_records are used: weighted = sets, reps, weight_kg; bodyweight = sets, reps or duration_seconds,
   optional added weight_kg; cardio = duration_seconds, distance_km, optional added weight_kg (vest, backpack).
   The database only blocks impossible rows; the rules per type are checked in the services (Milestone 3).
+- Services check every rule and signal a broken one with an exception from utils/exceptions.php
+  (ValidationException 400, NotFoundException 404, ExternalServiceException 503). They never write SQL.
+- Routes only read the request, call one service method and answer with Flight::json(); 201 for POST.
+  No SQL, no business rules and no try/catch in routes: the error handler in index.php answers every
+  exception as {"status": ..., "error": "..."} and never sends stack traces, SQL or file paths.
+- Path ids are written as @id:[0-9]+. URLs are plural nouns in kebab-case (/exercise-categories).
+- When a route changes, its OpenAPI attribute in public/v1/docs/paths/ changes in the same commit; every status
+  a route can return is documented.
+- External API calls go only through WgerService: timeout from config, failures written to the error log,
+  a friendly 503 to the client.
+- Write logs only through utils/Logger.php.
 
 ## Conventions
 - PHP classes: PascalCase (WorkoutService, WorkoutDao). Files are named after the class.
